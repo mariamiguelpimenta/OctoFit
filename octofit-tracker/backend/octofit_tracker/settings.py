@@ -26,12 +26,14 @@ SECRET_KEY = 'django-insecure-3_keh3gv(mbi51v-_%5-ma5d%&cwyt55*lwqsam&oxi9q=e0u+
 DEBUG = True
 
 import os
-ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 if os.environ.get('CODESPACE_NAME'):
     ALLOWED_HOSTS.append(f"{os.environ.get('CODESPACE_NAME')}-8000.app.github.dev")
 
 
 # Application definition
+
+ALLOWED_HOSTS.append('your.codespace.url')  # Add your codespace URL here
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -92,7 +94,8 @@ DATABASES = {
             'username': '',
             'password': '',
             'authSource': '',
-            'authMechanism': '',
+            # Remove authMechanism if not needed, or set to a valid value
+            # 'authMechanism': 'SCRAM-SHA-1',
         },
     }
 }
